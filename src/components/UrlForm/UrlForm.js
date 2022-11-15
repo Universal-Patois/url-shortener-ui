@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class UrlForm extends Component {
   constructor(props) {
     super();
@@ -10,12 +11,33 @@ class UrlForm extends Component {
     };
   }
 
+//   When the form is submitted, the new url should POST to the the server.
+// On a successful POST, the new shortened url should be added to the DOM as well.
+
+postUrl = async () => {
+  const response = await fetch('http://localhost:3001/api/v1/urls', {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      long_url: this.state.urlToShorten,
+      title: this.state.title,
+    }),
+})
+ 
+  console.log(response)
+  return response.json()
+}
+
+
   handleNameChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   }
 
   handleSubmit = e => {
     e.preventDefault();
+    this.postUrl()
     this.clearInputs();
   }
 
