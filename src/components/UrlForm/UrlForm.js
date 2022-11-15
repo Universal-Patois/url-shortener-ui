@@ -1,35 +1,15 @@
 import React, { Component } from 'react';
+import { getUrls, postUrl } from '../../apiCalls';
 
 
 class UrlForm extends Component {
-  constructor(props) {
+  constructor() {
     super();
-    this.props = props;
     this.state = {
       title: '',
       urlToShorten: ''
     };
   }
-
-//   When the form is submitted, the new url should POST to the the server.
-// On a successful POST, the new shortened url should be added to the DOM as well.
-
-postUrl = async () => {
-  const response = await fetch('http://localhost:3001/api/v1/urls', {
-    method: "POST",
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      long_url: this.state.urlToShorten,
-      title: this.state.title,
-    }),
-})
- 
-  console.log(response)
-  return response.json()
-}
-
 
   handleNameChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -37,7 +17,8 @@ postUrl = async () => {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.postUrl()
+    postUrl(this.state.urlToShorten, this.state.title)
+    
     this.clearInputs();
   }
 
