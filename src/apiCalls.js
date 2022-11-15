@@ -14,7 +14,7 @@ export const postUrl = async (url, title) => {
         long_url: url,
         title: title,
       }),
-  })
+    })
     console.log(response)
     return response.json()
   }
