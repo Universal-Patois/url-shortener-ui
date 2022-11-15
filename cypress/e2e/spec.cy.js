@@ -30,6 +30,15 @@ describe('url page', () => {
 
 describe('form post', () => {
   beforeEach (() => {
-    
+
+  })
+
+  it('should show the new url when a user fills the forma and submits', () => {
+    cy.get('[placeholder="Title..."]')
+    .type('Hello')
+  cy.get('[placeholder="URL to Shorten..."]')
+  .type('Hello')
+  cy.get('button').click()
+  cy.get(':nth-child(23) > h3').contains('HelloHelloHelloHello')
   })
 })
