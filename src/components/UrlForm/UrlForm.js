@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getUrls, postUrl } from '../../apiCalls';
+import {  postUrl } from '../../apiCalls';
 
 
 class UrlForm extends Component {
@@ -33,15 +33,15 @@ class UrlForm extends Component {
           type='text'
           placeholder='Title...'
           name='title'
-          value={this.state.title}
+          // value={this.state.title}
           onChange={e => this.handleNameChange(e)}
         />
 
         <input
           type='text'
           placeholder='URL to Shorten...'
-          name='title'
-          value={this.state.title}
+          name='urlToShorten'
+          value={this.state.urlToShorten}
           onChange={e => this.handleNameChange(e)}
         />
 
